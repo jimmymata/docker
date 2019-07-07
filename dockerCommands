@@ -17,8 +17,8 @@ docker start nombreCliente
 Ingresar a la terminal de un contenedor arrancado:
 docker exec -it nombreCliente /bin/bash
 
-Conectar un contenedor como unidad de disco local:
-sshfs -p 8022 root@172.17.0.1:/var/www /home/NOMBRE_USUARIO/Docker/container
+Conectar un contenedor como unidad de disco local: (indicar NOMBRE_USUARIO y CARPETA vacía que se usará para la conección)
+sshfs -p 8022 root@172.17.0.1:/var/www /home/NOMBRE_USUARIO/CARPETA
 
 Detener un contenedor:
 docker stop nombreCliente
