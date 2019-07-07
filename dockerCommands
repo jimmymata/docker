@@ -18,7 +18,7 @@ Ingresar a la terminal de un contenedor arrancado:
 docker exec -it nombreCliente /bin/bash
 
 Conectar un contenedor como unidad de disco local:
-sshfs -p 8022 root@172.17.0.1:/var/www /home/jimmy/Docker/container
+sshfs -p 8022 root@172.17.0.1:/var/www /home/NOMBRE_USUARIO/Docker/container
 
 Detener un contenedor:
 docker stop nombreCliente
@@ -29,8 +29,8 @@ docker export nombreCliente > nombreBackup.tar
 Crear una imagen desde un respaldo:
 docker import nombreBackup.tar nombreImagen
 
-Crear un contenedor drupal desde la imagen creada del respaldo:
-docker run -d --name nombreCliente -p 80:80 -p 4200:4200 -p 8022:22 -p 8080:80 -p 8081:80 -p 8082:80 -p 8083:80 -p 8084:80 -p 8085:80 -p 8443:443 -p 35729:35729 -t nombreImagen /bin/bash
+Crear un contenedor drupal desde la imagen creada del respaldo: (-p PUERTO_LOCAL:PUERTO_DOCKER)
+docker run -d --name nombreCliente -p 80:80 -p 4200:4200 -p 8022:22 -p 8443:443 -p 35729:35729 -t nombreImagen /bin/bash
 
 Borrar un contenedor:
 docker rm nombreCliente
