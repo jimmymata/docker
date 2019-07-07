@@ -1,0 +1,40 @@
+Descargar una imagen:
+docker pull nombreImagen
+
+Ver lista de las imágenes descargadas:
+docker images
+
+Ver lista contenedores activos:
+docker ps
+
+Ver lista contenedores activos e inactivos:
+docker ps -a
+docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2 )
+
+Arrancar un contenedor:
+docker start nombreCliente
+
+Ingresar a la terminal de un contenedor arrancado:
+docker exec -it nombreCliente /bin/bash
+
+Conectar un contenedor como unidad de disco local:
+sshfs -p 8022 root@172.17.0.1:/var/www /home/jimmy/Docker/container
+
+Detener un contenedor:
+docker stop nombreCliente
+
+Crear respaldo de un contenedor:
+docker export nombreCliente > nombreBackup.tar
+
+Crear una imagen desde un respaldo:
+docker import nombreBackup.tar nombreImagen
+
+Crear un contenedor drupal desde la imagen creada del respaldo:
+docker run -d --name nombreCliente -p 80:80 -p 4200:4200 -p 8022:22 -p 8080:80 -p 8081:80 -p 8082:80 -p 8083:80 -p 8084:80 -p 8085:80 -p 8443:443 -p 35729:35729 -t nombreImagen /bin/bash
+
+Borrar un contenedor:
+docker rm nombreCliente
+
+Borrar una imagen:
+docker rmi nombreImagen
+
